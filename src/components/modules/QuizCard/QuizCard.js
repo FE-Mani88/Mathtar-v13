@@ -8,15 +8,6 @@ import ThemeToggle from '@/components/modules/ThemeToggle/ThemeToggle';
 
 export default function  QuizCard({ id, title, description, difficulty, duration, totalQuestions, image }) {
 
-    // const variants = {
-    //     hidden: { x: '100%', opacity: 0 }, // حالت پنهان: خارج از صفحه و شفافیت 0
-    //     visible: { x: 0, opacity: 1 }, // حالت قابل مشاهده: در موقعیت اصلی و شفافیت 1
-    //     transition: {
-    //         easeInOut: 'linear'
-    //     }
-    // };
-    // console.log(imageUrl);
-
     const [isDark, setIsDark] = useState(() => {
         const savedTheme = localStorage.getItem('theme');
         return savedTheme === 'dark';
@@ -32,14 +23,10 @@ export default function  QuizCard({ id, title, description, difficulty, duration
 
     return (
         <>
-            
             <Link href={`/quiz/${id}`} data-aos='fade-up' className="block transform translate-y-[100px] transition-all !duration-300">
-                <div initial="hidden" // شروع با حالت پنهان
-                    // animate="visible" // انیمیشن به حالت قابل مشاهده
-                    // variants={variants} // تعیین حالت‌ها
+                <div initial="hidden"
                     transition={{ duration: 0.5 }} className="bg-white dark:bg-[#293546] rounded-xl shadow-lg overflow-hidden"
                 >
-
                     <div className="h-48 overflow-hidden">
                         <img
                             src={image}

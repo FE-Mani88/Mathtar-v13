@@ -73,7 +73,7 @@ export default function Main() {
                             <img src="./images/image.png" width={1104} height={512} alt="Features" />
                         </div>
                         {/* Items */}
-                        <div className="cbl28 c8bbi c4ebt c4v1u cpkit cckpn ct4ea c5a57">
+                        <div data-aos='fade-left' className="cbl28 c8bbi c4ebt c4v1u cpkit cckpn ct4ea c5a57">
                             <div className="flex flex-col items-center text-center">
                                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-blue-500 flex items-center justify-center mb-4">
                                     <Timer className="w-8 h-8 text-white" />

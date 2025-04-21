@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { LogIn, User, Telescope, Search, Flame, Timer, Brain, Wifi } from 'lucide-react'
+import { LogIn, User, Telescope, Search, Flame, Timer, Brain, Wifi, AlignJustify } from 'lucide-react'
 import Link from 'next/link'
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
-export default function Header() {
+export default function Header({ isUserRegistered }) {
     const [isDark, setIsDark] = useState(true);
 
     useEffect(() => {
@@ -19,12 +19,12 @@ export default function Header() {
 
     return (
         <>
-            <header className="c307p cvtc3 c0ayg">
+            <header className="c307p cvtc3 c0ayg" >
                 <ThemeToggle isDark={isDark} onToggle={() => setIsDark(!isDark)} />
-                <div className="cbl28 c0g2c coaq6 cb0ik">
-                    <div className="chip0 cglp6 c4mnq cd10w cdoit fexample">
-                        <div className="cosxg cveoo">
-                            <Link className="cprq6" href="/" aria-label="Cruip">
+                <div className={`cbl28 c0g2c coaq6 cb0ik ${isUserRegistered ? ' flex justify-end items-center' : null}`}>
+                    <div className={`chip0 cglp6 c4mnq cd10w cdoit fexample ${isUserRegistered ? ' flex justify-between gap-[800px]' : null}`}>
+                        <div className="cosxg cveoo hidden ">
+                            <Link className="cprq6 " href="/" aria-label="Cruip">
                                 <svg className="cxofs cnujf" viewBox="0 0 32 32">
                                     <defs>
                                         <radialGradient cx="50%" cy="89.845%" fx="50%" fy="89.845%" r="108.567%"
@@ -56,28 +56,55 @@ export default function Header() {
                             </Link>
                         </div>
 
-                        <nav className="chip0 cxgjn">
+                        <nav className="chip0 cxgjn flex items-center">
+                            <ul className={`chip0 cxgjn cutr6 c4mnq cbv5p ${isUserRegistered ? '!hidden sm:!flex' : null}`}>
+                                {isUserRegistered ? (
+                                    <>
+                                        <li className='c8h5l'>
+                                            "FIFI"
+                                        </li>
+                                        <li className='c8h5l'>
+                                            "FIFI"
+                                        </li>
+                                        <li className='c8h5l'>
+                                            "FIFI"
+                                        </li>
+                                        <li className='c8h5l'>
+                                            <img className='w-28 sm:w-60 mt-2' src="/images/mathyarLogo.png" alt="#" />
+                                        </li>
+                                    </>
 
-                            <ul className="chip0 cxgjn cutr6 c4mnq cbv5p">
-                                <li className='c8h5l'>
-                                    <Link className="sm:!px-4 !px-2 chip0 c4mnq c5mpl chs2t cazq3 ckdyj cdm1x c6m7s ckwz7 cysah cua40 make-btn"
-                                        href="/register">
-                                        <p className='txt-margin !text-[11.1px] sm:!text-[18px] '> ساخت اکانت  </p>
-                                        <User />
-                                    </Link>
-                                </li>
-                                <li className="c8h5l flex items-center">
-                                    <Link className="sm:!px-4 !px-2 !text-[11.2px] sm:!text-[18px] c2pi2 c0ayg c4wey cl6ef cf4pm cqbpd cxmkl c4aul c76qn" href="login">
-                                        ورود به اکانت <span className="cfe40 cr1tk c56im cv73b c6m7s ckwz7 ccx8x"><LogIn /></span>
-                                    </Link>
-                                </li>
+                                ) : (
+                                    <>
+                                        <li className='c8h5l'>
+                                            <Link className="sm:!px-4 !px-2 chip0 c4mnq c5mpl chs2t cazq3 ckdyj cdm1x c6m7s ckwz7 cysah cua40 make-btn"
+                                                href="/register">
+                                                <p className='txt-margin !text-[11.1px] sm:!text-[18px] '> ساخت اکانت  </p>
+                                                <User />
+                                            </Link>
+                                        </li>
+                                        <li className="c8h5l">
+                                            <Link className="sm:!px-4 !px-2 !text-[11.2px] sm:!text-[18px] c2pi2 c0ayg c4wey cl6ef cf4pm cqbpd cxmkl c4aul c76qn" href="login">
+                                                ورود به اکانت <span className="cfe40 cr1tk c56im cv73b c6m7s ckwz7 ccx8x"><LogIn /></span>
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
                             </ul>
-
+                            {isUserRegistered ? (
+                                <div className='sm:hidden'>
+                                    <AlignJustify id='navbar-menu-icon' style={{ color: '#838e9d', cursor: 'pointer' }} />
+                                </div>
+                            ) : (
+                                <>
+                                    hello
+                                </>
+                            )}
                         </nav>
 
                     </div>
                 </div>
-            </header>
+            </header >
         </>
     )
 }

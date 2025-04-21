@@ -2475,3 +2475,7 @@ input[type=range]::-moz-focus-outer {
 input:focus {
   outline: none !important;
 }
+
+#navbar-menu-icon:hover {
+  color:#574987 !important;
+}

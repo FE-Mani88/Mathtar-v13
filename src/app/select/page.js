@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
+import Navbar from '@/components/modules/Navbar/Navbar'
 import QuizCard from '@/components/modules/QuizCard/QuizCard';
 import { GraduationCap } from 'lucide-react'
 
@@ -7,6 +8,7 @@ export default function Select() {
 
   const [selectedGrade, setSelectedGrade] = useState(null);
   const [quizzes, setQuizzes] = useState(null)
+
 
   useEffect(() => {
     const fetchHandler = async () => {
@@ -28,8 +30,12 @@ export default function Select() {
     return quiz.grade == selectedGrade
   }) : quizzes
 
+  /////////////////other
+
+
   return (
     <>
+      <Navbar isUserRegistered={true} />
       <div className='min-h-screen bg-gray-50 dark:!bg-[#1a2331] transition-all scroll-y-hidden bg-[./images/codes.png]'>
         <div className="">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -50,8 +56,8 @@ export default function Select() {
                 <button
                   key={grade}
                   onClick={() => setSelectedGrade(selectedGrade === grade ? null : grade)}
-                  className={`dark:!text-white !px-6 !py-3 !bg-gray-600 rounded-lg font-medium transition-colors ${selectedGrade === grade
-                    ? '!bg-blue-600 !text-white dark:!bg-gray-900'
+                  className={`dark:!text-white !px-6 !py-3 !bg-gray-400 dark:!bg-gray-600 rounded-lg font-medium transition-colors ${selectedGrade === grade
+                    ? '!bg-blue-600 !bg-sky-600 !text-white dark:!bg-gray-900'
                     : 'text-gray-700 hover:!bg-sky-500 hover:!text-white dark:!bg-gray-700 dark:hover:!bg-gray-800 dark:hover:!text-gray-300'
                     }`}
                 >
@@ -60,6 +66,7 @@ export default function Select() {
               ))}
             </div>
             {/* End Filter Buttons */}
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredQuizzes?.map((quiz, index) => (
                 <QuizCard key={index} {...quiz} />
