@@ -20,7 +20,7 @@ export default async function page() {
         redirect('/login')
     }
 
-    const mainUser = await userModel.findOne({ phoneNumber: tokenPayload.phoneNumber })
+    const mainUser = await userModel.findOne({ phoneNumber: tokenPayload?.phoneNumber })
 
     const parsedMainUser = JSON.parse(JSON.stringify(mainUser))
 

@@ -97,7 +97,7 @@ export function ActiveQuiz({id, questions, duration, title }) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 dark:bg-[#121a29] transition-all">
+    <div className="min-h-screen bg-gray-50 py-12 px-4 dark:bg-[#121a29] transition-all mt-8">
       <div className="max-w-3xl mx-auto">
         <QuizProgress
           currentQuestion={currentQuestion + 1}

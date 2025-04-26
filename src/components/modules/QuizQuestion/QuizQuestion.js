@@ -2,7 +2,7 @@ import React from 'react';
 
 export function QuizQuestion({ question, selectedAnswer, onAnswerSelect }) {
   return (
-    <div className="bg-white dark:bg-[#222c40] p-6 rounded-lg shadow-md">
+    <div className="bg-white dark:bg-[#222c40] p-6 rounded-lg shadow-md mt-4">
       <h3 className="!text-xl font-medium !mb-4 dark:text-white rtl">{question?.question}</h3>
       <div className="!space-y-3">
         {question?.options.map((option, index) => (

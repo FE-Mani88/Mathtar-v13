@@ -23,6 +23,7 @@ export default function AllTemplate({id,  questions, image, title, difficulty, t
                                 src={image}
                                 alt={title}
                                 className="w-full h-full object-cover"
+                                style={{height: '100%'}}
                             />
                         </div>
 
@@ -65,7 +66,7 @@ export default function AllTemplate({id,  questions, image, title, difficulty, t
                                     <BarChart className="w-6 h-6 dark:text-white" />
                                     <div>
                                         <p className="text-sm text-gray-500 dark:text-white">سطح آزمون</p>
-                                        <p className="font-medium capitalize dark:text-white">{difficulty === 'easy' ? 'آسان' : mainQuiz?.difficulty === 'medium' ? 'متوسط' : 'سخت'}</p>
+                                        <p className="font-medium capitalize dark:text-white">{difficulty === 'easy' ? 'آسان' : difficulty === 'medium' ? 'متوسط' : 'سخت'}</p>
                                     </div>
                                 </div>
                             </div>

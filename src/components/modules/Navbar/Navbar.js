@@ -1,11 +1,15 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import { LogIn, User, Telescope, Search, Flame, Timer, Brain, Wifi, AlignJustify } from 'lucide-react'
+import { LogIn, User, Telescope, Search, Flame, Timer, Brain, Wifi, AlignJustify, ChevronUp, ChevronLeft, ChevronDown } from 'lucide-react'
 import Link from 'next/link'
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
+import SideBar from '@/components/modules/SideBar/SideBar'
 
-export default function Header({ isUserRegistered }) {
+export default function Header({ isUserRegistered, mainUser }) {
     const [isDark, setIsDark] = useState(true);
+    const [isSideBarActive, setIsSideBarActive] = useState(false)
+
+    console.log('NMQK *& => ', mainUser);
 
     useEffect(() => {
         if (isDark) {
@@ -16,6 +20,10 @@ export default function Header({ isUserRegistered }) {
             localStorage.setItem('theme', 'light')
         }
     }, [isDark]);
+
+
+    const [mainUserDetails, setMainUserDetails] = useState(mainUser)
+
 
     return (
         <>
@@ -57,17 +65,26 @@ export default function Header({ isUserRegistered }) {
                         </div>
 
                         <nav className="chip0 cxgjn flex items-center">
-                            <ul className={`chip0 cxgjn cutr6 c4mnq cbv5p ${isUserRegistered ? '!hidden sm:!flex' : null}`}>
+                            <ul className={`chip0 cxgjn cutr6 c4mnq cbv5p gap-x-3 ${isUserRegistered ? '!hidden sm:!flex' : null}`}>
                                 {isUserRegistered ? (
                                     <>
-                                        <li className='c8h5l'>
-                                            "FIFI"
+                                        <li className='c8h5l text-lg border-bottom-1 text-black dark:text-gray-200 flex items-center cursor-pointer !transation-all duration-150 hover:text-gray-400'>
+                                            <ChevronDown className='w-5 h-5' />
+                                            <Link href='/dashboard'>
+                                                <span>داشبورد</span>
+                                            </Link>
                                         </li>
-                                        <li className='c8h5l'>
-                                            "FIFI"
+                                        <li className='c8h5l text-lg border-bottom-1 text-black dark:text-gray-200 flex items-center cursor-pointer !transation-all duration-150 hover:text-gray-400'>
+                                            <ChevronDown className='w-5 h-5' />
+                                            <Link href='/select'>
+                                                <span>آزمون ها</span>
+                                            </Link>
                                         </li>
-                                        <li className='c8h5l'>
-                                            "FIFI"
+                                        <li className='c8h5l text-lg border-bottom-1 text-black dark:text-gray-200 flex items-center cursor-pointer !transation-all duration-150 hover:text-gray-400'>
+                                            <ChevronDown className='w-5 h-5' />
+                                            <Link href='/'>
+                                                <span>صفحه اصلی</span>
+                                            </Link>
                                         </li>
                                         <li className='c8h5l'>
                                             <img className='w-28 sm:w-60 mt-2' src="/images/mathyarLogo.png" alt="#" />
@@ -92,18 +109,25 @@ export default function Header({ isUserRegistered }) {
                                 )}
                             </ul>
                             {isUserRegistered ? (
-                                <div className='sm:hidden'>
+                                <div className='sm:hidden' onClick={() => {
+                                    if (isSideBarActive) {
+                                        setIsSideBarActive(false)
+                                        console.log('CLOSE')
+                                    } else {
+                                        setIsSideBarActive(true)
+                                        console.log('OPEN')
+                                    }
+                                }}>
                                     <AlignJustify id='navbar-menu-icon' style={{ color: '#838e9d', cursor: 'pointer' }} />
                                 </div>
-                            ) : (
-                                <>
-                                    hello
-                                </>
-                            )}
+                            ) : null}
                         </nav>
+
 
                     </div>
                 </div>
+
+                {isSideBarActive ? <SideBar mainUser={mainUserDetails} /> : null}
             </header >
         </>
     )

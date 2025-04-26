@@ -32,6 +32,7 @@ export default function  QuizCard({ id, title, description, difficulty, duration
                             src={image}
                             alt={title}
                             className="w-full h-full object-cover"
+                            
                         />
                     </div>
                     <div className="p-6">

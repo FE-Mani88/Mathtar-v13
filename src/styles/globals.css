@@ -2479,3 +2479,10 @@ input:focus {
 #navbar-menu-icon:hover {
   color:#574987 !important;
 }
+
+.customize-sidebar {
+  min-height: 100vh;
+  max-width: 280px;
+  position: fixed;
+  top: 0;
+}

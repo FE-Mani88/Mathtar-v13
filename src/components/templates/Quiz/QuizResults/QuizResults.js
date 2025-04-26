@@ -6,7 +6,7 @@ export function QuizResults({ score, totalQuestions, answers, questions, quizTit
     const percentage = Math.round((score / totalQuestions) * 100);
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 dark:bg-[#121a29]">
+        <div className="min-h-screen bg-gray-50 py-12 px-4 dark:bg-[#121a29] mt-8">
             <div className="max-w-3xl mx-auto">
                 <div className="bg-white rounded-2xl shadow-xl p-8 dark:bg-[#303b52]">
                     <div className="text-center mb-8">
